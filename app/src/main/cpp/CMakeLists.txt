@@ -25,9 +25,10 @@ aux_source_directory("${src_dir}/json" json_src)
 aux_source_directory("${src_dir}/network" network_src)
 aux_source_directory("${src_dir}/sign" sign_src)
 aux_source_directory("${src_dir}/utils" utils_src)
+aux_source_directory("${src_dir}/bridge" bridge_src)
 
 message("root_src=${root_src}")
-message("hello,123")
+message("hello,12")
 
 add_subdirectory("${sub_dir}/cJSON")
 
@@ -37,7 +38,8 @@ add_library(${CMAKE_PROJECT_NAME} SHARED
         ${json_src}
         ${network_src}
         ${sign_src}
-        ${utils_src})
+        ${utils_src}
+        ${bridge_src})
 
 target_link_libraries(${CMAKE_PROJECT_NAME}
         android

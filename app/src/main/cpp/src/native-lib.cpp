@@ -8,6 +8,7 @@ extern "C" {
 #include "json/json_tool.h"
 #include "json/cjson_test.h"
 #include "utils/md5_tool.h"
+#include "bridge/cjson_bridge.h"
 }
 
 void call_parseJson(const char *name) {
@@ -42,6 +43,8 @@ static JNINativeMethod jniNativeMethod[] = {
         {"javaMethodName", "(Ljava/lang/String;)Ljava/lang/String;", (void *) native_method_name}
 };
 
+int registerCJsonNativeMethod();
+
 extern "C" JNIEXPORT jstring
 
 JNICALL
@@ -62,7 +65,8 @@ jint registerNativeMethod(JNIEnv *pEnv) {
     return pEnv->RegisterNatives(clazz, methods, nMethods);
 }
 
-JNIEXPORT jint JNI_OnLoad(JavaVM *vm, void *reserved) {
+
+jint JNI_OnLoad(JavaVM *vm, void *reserved) {
     ALOGE("JNI_OnLoad.........");
     JNIEnv *env = nullptr;
     int ret = vm->GetEnv(reinterpret_cast<void **>(&env), JNI_VERSION_1_6);
@@ -74,5 +78,8 @@ JNIEXPORT jint JNI_OnLoad(JavaVM *vm, void *reserved) {
     assert(env != nullptr);
     ret = registerNativeMethod(env);
     ALOGI("JNI_OnLoad-registerNativeMethod-result=%d,", ret);
+
+    ret = register_cjson_native_method(env);
+    ALOGI("JNI_OnLoad-registerCJsonNativeMethod-result=%d,", ret);
     return JNI_VERSION_1_6;
 }
