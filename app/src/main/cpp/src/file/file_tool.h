@@ -1,0 +1,8 @@
+//
+// Created by 86177 on 2024/9/14.
+//
+
+#ifndef ANDROIDCPP_FILE_TOOL_H
+#define ANDROIDCPP_FILE_TOOL_H
+
+#endif //ANDROIDCPP_FILE_TOOL_H

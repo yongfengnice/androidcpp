@@ -1,0 +1,8 @@
+//
+// Created by 86177 on 2024/9/14.
+//
+
+#ifndef ANDROIDCPP_SOCKET_TOOL_H
+#define ANDROIDCPP_SOCKET_TOOL_H
+
+#endif //ANDROIDCPP_SOCKET_TOOL_H
