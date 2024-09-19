@@ -11,6 +11,13 @@ extern "C"
 
 #include <jni.h>
 #include "log/android_log.h"
+#include "cJSON/cJSON.h"
+
+int cjson_parse_json(JNIEnv *env, jclass thiz, jstring json);
+
+static JNINativeMethod cjson_native_method[] = {
+        {"parseJson", "(Ljava/lang/String;)I", (void *) cjson_parse_json}
+};
 
 int register_cjson_native_method(JNIEnv *pEnv);
 

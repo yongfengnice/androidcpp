@@ -1,15 +1,29 @@
 package com.suyf.androidcpp
 
 import android.os.Bundle
+import android.util.Log
 import androidx.appcompat.app.AppCompatActivity
-import com.blankj.utilcode.util.ToastUtils
 import com.suyf.androidcpp.databinding.ActivityMainBinding
-import com.suyf.androidcpp.jni.JavaMethodBridge
-import com.suyf.androidcpp.jni.NativeMethodBridge
+import com.suyf.androidcpp.jni.NativeCjsonBridge
+import com.suyf.androidcpp.jni.NativeMD5Bridge
 
 class MainActivity : AppCompatActivity() {
 
+    companion object {
+        init {
+            System.loadLibrary("androidcpp")
+        }
+    }
+
     private lateinit var binding: ActivityMainBinding
+
+    private val testJson = """
+            {
+                "address": "guangzhou",
+                "age": 30,
+                "name": "zhangsan"
+            }
+        """.trim()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -17,19 +31,17 @@ class MainActivity : AppCompatActivity() {
         setContentView(binding.root)
         binding.sampleText.text = stringFromJNI()
 
-        binding.callJniMethod.setOnClickListener {
-            ToastUtils.showShort(JavaMethodBridge.javaMethodName("java_name"))
-        }
         binding.callMd5.setOnClickListener {
-            NativeMethodBridge.callMd5()
+            Log.d("Suyf", "onCreate: ${NativeMD5Bridge.calculateMD5("hello,cpp")}")
+            Log.d("Suyf", "onCreate: ${NativeMD5Bridge.calculateMD5("hello,world")}")
         }
+
+        binding.callParseJson.setOnClickListener {
+            NativeCjsonBridge.parseJson(testJson)
+        }
+
     }
 
-    external fun stringFromJNI(): String
+    private external fun stringFromJNI(): String
 
-    companion object {
-        init {
-            System.loadLibrary("androidcpp")
-        }
-    }
 }

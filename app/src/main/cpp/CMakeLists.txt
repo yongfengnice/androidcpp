@@ -28,7 +28,7 @@ aux_source_directory("${src_dir}/utils" utils_src)
 aux_source_directory("${src_dir}/bridge" bridge_src)
 
 message("root_src=${root_src}")
-message("hello,12")
+message("hello,123")
 
 add_subdirectory("${sub_dir}/cJSON")
 

@@ -1,29 +1,42 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:gravity="center_horizontal"
-    android:orientation="vertical"
-    android:padding="10dp">
+    android:layout_height="match_parent">
 
-    <TextView
-        android:id="@+id/sample_text"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Hello World!" />
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:gravity="center_horizontal"
+        android:orientation="vertical"
+        android:padding="10dp">
 
-    <Button
-        android:id="@+id/call_jni_method"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="点击调用jni实现的方法"
-        android:textAllCaps="false" />
+        <TextView
+            android:id="@+id/sample_text"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Hello World!" />
 
-    <Button
-        android:id="@+id/call_md5"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="md5测试"
-        android:textAllCaps="false" />
+        <Button
+            android:id="@+id/call_jni_method"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="点击调用jni实现的方法"
+            android:textAllCaps="false" />
 
-</LinearLayout>
+        <Button
+            android:id="@+id/call_md5"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="md5测试"
+            android:textAllCaps="false" />
+
+        <Button
+            android:id="@+id/call_parse_json"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="解析json"
+            android:textAllCaps="false" />
+
+    </LinearLayout>
+
+</ScrollView>

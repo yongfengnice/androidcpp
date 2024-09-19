@@ -7,4 +7,6 @@
 
 int main_md5_tool(char *dest, int size, const char *msg);
 
+char *main_md5_tool2(const char *msg);
+
 #endif //ANDROIDCPP_MD5_TOOL_H

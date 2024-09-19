@@ -166,3 +166,10 @@ int main_md5_tool(char *dest, int size, const char *msg) {
     ALOGI("md5_str==%s", dest);
     return 0;
 }
+
+char *main_md5_tool2(const char *msg) {
+    static char md5_str[33];
+    memset(md5_str, 0, sizeof(md5_str));
+    main_md5_tool(md5_str, sizeof(md5_str), msg);
+    return md5_str;
+}
