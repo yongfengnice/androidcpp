@@ -40,6 +40,10 @@ class MainActivity : AppCompatActivity() {
             NativeCjsonBridge.parseJson(testJson)
         }
 
+        binding.callOpensslMd5.setOnClickListener {
+            Log.d("Suyf", "calOpensslMd5: ${NativeMD5Bridge.calOpensslMd5("hello,world")}")
+        }
+
     }
 
     private external fun stringFromJNI(): String

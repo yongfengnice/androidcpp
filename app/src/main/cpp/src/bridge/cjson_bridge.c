@@ -23,6 +23,7 @@ int cjson_parse_json(JNIEnv *env, jclass thiz, jstring json) {
         ALOGI("cjson_parse_json age==%d", ageJson->valueint);
     }
     cJSON_Delete(root);
+    return 0;
 }
 
 int register_cjson_native_method(JNIEnv *pEnv) {

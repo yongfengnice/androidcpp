@@ -37,6 +37,13 @@
             android:text="解析json"
             android:textAllCaps="false" />
 
+        <Button
+            android:id="@+id/call_openssl_md5"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="调用openssl计算md5"
+            android:textAllCaps="false" />
+
     </LinearLayout>
 
 </ScrollView>

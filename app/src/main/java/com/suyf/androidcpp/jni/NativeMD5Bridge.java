@@ -7,4 +7,6 @@ package com.suyf.androidcpp.jni;
 public class NativeMD5Bridge {
 
     public static native String calculateMD5(String origin);
+
+    public static native String calOpensslMd5(String origin);
 }

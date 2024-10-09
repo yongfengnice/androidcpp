@@ -15,6 +15,7 @@ set(sub_dir "submodule")
 #include_directories("${PROJECT_SOURCE_DIR}/include")
 include_directories("${src_dir}")
 include_directories("${PROJECT_SOURCE_DIR}/${sub_dir}")
+include_directories("${PROJECT_SOURCE_DIR}/${sub_dir}/openssl3.3.2/include")
 #include_directories("${header_dir}/json")
 #include_directories("${header_dir}/log")
 #include_directories("${header_dir}/utils")
@@ -28,9 +29,12 @@ aux_source_directory("${src_dir}/utils" utils_src)
 aux_source_directory("${src_dir}/bridge" bridge_src)
 
 message("root_src=${root_src}")
-message("hello,123")
+message("hello,1234")
 
 add_subdirectory("${sub_dir}/cJSON")
+
+#CMAKE_SOURCE_DIR==D:/work/androidcpp/app/src/main/cpp
+set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -L${CMAKE_SOURCE_DIR}/../jniLibs/${ANDROID_ABI}")
 
 add_library(${CMAKE_PROJECT_NAME} SHARED
         ${root_src}
@@ -44,4 +48,6 @@ add_library(${CMAKE_PROJECT_NAME} SHARED
 target_link_libraries(${CMAKE_PROJECT_NAME}
         android
         cjson
+        crypto
+        ssl
         log)
