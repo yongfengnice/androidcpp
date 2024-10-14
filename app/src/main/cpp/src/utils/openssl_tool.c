@@ -6,6 +6,13 @@
 #include "log/android_log.h"
 #include "openssl/crypto.h"
 #include "openssl/md5.h"
+#include "openssl/err.h"
+#include "openssl/x509.h"
+#include "openssl/rsa.h"
+#include "openssl/crypto.h"
+#include "openssl/pem.h"
+#include "openssl/ssl.h"
+#include "openssl/err.h"
 #include <string.h>
 
 void openssl_tool_version() {

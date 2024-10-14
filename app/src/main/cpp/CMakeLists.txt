@@ -16,6 +16,9 @@ set(sub_dir "submodule")
 include_directories("${src_dir}")
 include_directories("${PROJECT_SOURCE_DIR}/${sub_dir}")
 include_directories("${PROJECT_SOURCE_DIR}/${sub_dir}/openssl3.3.2/include")
+include_directories("${PROJECT_SOURCE_DIR}/${sub_dir}/libpsl/include")
+include_directories("${PROJECT_SOURCE_DIR}/${sub_dir}/zlib1.3.1/include")
+include_directories("${PROJECT_SOURCE_DIR}/${sub_dir}/curl8.1.0/include")
 #include_directories("${header_dir}/json")
 #include_directories("${header_dir}/log")
 #include_directories("${header_dir}/utils")
@@ -34,7 +37,9 @@ message("hello,1234")
 add_subdirectory("${sub_dir}/cJSON")
 
 #CMAKE_SOURCE_DIR==D:/work/androidcpp/app/src/main/cpp
-set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -L${CMAKE_SOURCE_DIR}/../jniLibs/${ANDROID_ABI}")
+#下面两句等价，都是链接到.so和.a文件所在的目录
+#set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -L${CMAKE_SOURCE_DIR}/../jniLibs/${ANDROID_ABI}")
+link_directories("${CMAKE_SOURCE_DIR}/../jniLibs/${ANDROID_ABI}")
 
 add_library(${CMAKE_PROJECT_NAME} SHARED
         ${root_src}
@@ -45,9 +50,16 @@ add_library(${CMAKE_PROJECT_NAME} SHARED
         ${utils_src}
         ${bridge_src})
 
+#set_target_properties(${CMAKE_PROJECT_NAME} PROPERTIES
+#        IMPORTED_LOCATION ${CMAKE_SOURCE_DIR}/../jniLibs/${ANDROID_ABI}/libcurl.a
+#        )
+
 target_link_libraries(${CMAKE_PROJECT_NAME}
         android
         cjson
         crypto
         ssl
+        psl
+        z
+        curl
         log)

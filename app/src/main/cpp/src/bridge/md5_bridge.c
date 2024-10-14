@@ -5,6 +5,8 @@
 #include "md5_bridge.h"
 #include "utils/md5_tool.h"
 #include "utils/openssl_tool.h"
+#include "libpsl.h"
+#include "curl.h"
 
 jstring cmd5_calculate_md5(JNIEnv *env, jclass thiz, jstring str) {
     const char *c_str = (*env)->GetStringUTFChars(env, str, JNI_FALSE);
@@ -18,6 +20,12 @@ jstring cmd5_openssl_md5(JNIEnv *env, jclass thiz, jstring str) {
     const char *c_str = (*env)->GetStringUTFChars(env, str, JNI_FALSE);
     const char *md5 = openssl_tool_md5_new(c_str);
     ALOGI("cmd5_calculate_md5 openssl_md5=%s", md5);
+
+    const char * psl_version = psl_builtin_sha1sum();
+    ALOGI("cmd5_calculate_md5 psl_version=%s", psl_version);
+
+    const char * curl_ver = curl_version();
+    ALOGI("cmd5_calculate_md5 curl_ver=%s", curl_ver);
 
     if (md5 != NULL) {
         jstring ret = (*env)->NewStringUTF(env, md5);
