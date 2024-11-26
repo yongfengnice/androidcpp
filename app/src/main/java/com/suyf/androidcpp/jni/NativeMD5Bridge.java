@@ -9,4 +9,6 @@ public class NativeMD5Bridge {
     public static native String calculateMD5(String origin);
 
     public static native String calOpensslMd5(String origin);
+
+    public static native String callOpensslSm2(String origin);
 }

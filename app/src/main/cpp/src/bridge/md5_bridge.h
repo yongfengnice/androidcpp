@@ -16,9 +16,12 @@ jstring cmd5_calculate_md5(JNIEnv *env, jclass thiz, jstring str);
 
 jstring cmd5_openssl_md5(JNIEnv *env, jclass thiz, jstring str);
 
+jstring cmd5_openssl_sm2(JNIEnv *env, jclass thiz, jstring str);
+
 static JNINativeMethod md5_native_method[] = {
-        {"calculateMD5",  "(Ljava/lang/String;)Ljava/lang/String;", (void *) cmd5_calculate_md5},
-        {"calOpensslMd5", "(Ljava/lang/String;)Ljava/lang/String;", (void *) cmd5_openssl_md5}
+        {"calculateMD5",   "(Ljava/lang/String;)Ljava/lang/String;", (void *) cmd5_calculate_md5},
+        {"calOpensslMd5",  "(Ljava/lang/String;)Ljava/lang/String;", (void *) cmd5_openssl_md5},
+        {"callOpensslSm2", "(Ljava/lang/String;)Ljava/lang/String;", (void *) cmd5_openssl_sm2}
 };
 
 int register_md5_native_method(JNIEnv *pEnv);

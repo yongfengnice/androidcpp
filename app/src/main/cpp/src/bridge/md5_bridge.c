@@ -8,6 +8,8 @@
 #include "libpsl.h"
 #include "curl.h"
 
+extern int test_my_sm2();
+
 jstring cmd5_calculate_md5(JNIEnv *env, jclass thiz, jstring str) {
     const char *c_str = (*env)->GetStringUTFChars(env, str, JNI_FALSE);
     char *ret = main_md5_tool2(c_str);
@@ -21,10 +23,10 @@ jstring cmd5_openssl_md5(JNIEnv *env, jclass thiz, jstring str) {
     const char *md5 = openssl_tool_md5_new(c_str);
     ALOGI("cmd5_calculate_md5 openssl_md5=%s", md5);
 
-    const char * psl_version = psl_builtin_sha1sum();
+    const char *psl_version = psl_builtin_sha1sum();
     ALOGI("cmd5_calculate_md5 psl_version=%s", psl_version);
 
-    const char * curl_ver = curl_version();
+    const char *curl_ver = curl_version();
     ALOGI("cmd5_calculate_md5 curl_ver=%s", curl_ver);
 
     if (md5 != NULL) {
@@ -33,6 +35,11 @@ jstring cmd5_openssl_md5(JNIEnv *env, jclass thiz, jstring str) {
         return ret;
     }
     return NULL;
+}
+
+jstring cmd5_openssl_sm2(JNIEnv *env, jclass thiz, jstring str) {
+    test_my_sm2();
+    return (*env)->NewStringUTF(env, "cmd5_openssl_sm2_ok");
 }
 
 int register_md5_native_method(JNIEnv *pEnv) {

@@ -21,7 +21,7 @@ class MainActivity : AppCompatActivity() {
             {
                 "address": "guangzhou",
                 "age": 30,
-                "name": "zhangsan"
+                "name": "zhangsan123"
             }
         """.trim()
 
@@ -42,6 +42,9 @@ class MainActivity : AppCompatActivity() {
 
         binding.callOpensslMd5.setOnClickListener {
             Log.d("Suyf", "calOpensslMd5: ${NativeMD5Bridge.calOpensslMd5("hello,world")}")
+        }
+        binding.callOpensslSm2.setOnClickListener {
+            Log.d("Suyf", "callOpensslSm2: ${NativeMD5Bridge.callOpensslSm2("hello,world")}")
         }
 
     }
